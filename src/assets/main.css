@@ -1,0 +1,35 @@
+@import "./base.css";
+
+html,
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  cursor: url("defult1.cur"),auto;
+  margin: 0;
+}
+body button{
+  cursor: url("pointer1.cur"),auto;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+} /* 这是针对缺省样式 (必须的) */
+
+::-webkit-scrollbar-track {
+  border: none;
+  background: transparent!important;
+} /* 滚动条的滑轨背景颜色 */
+
+::-webkit-scrollbar-thumb {
+  background: #434343;
+  border-radius: 16px;
+  box-shadow: inset 2px 2px 2px hsl(0deg 0% 39% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+} /* 滑块颜色 */
+
+::-webkit-scrollbar-button {
+    width: 15px;
+} /* 滑轨两头的监听按钮*/
+
+::-webkit-scrollbar-corner {
+
+} /* 横向滚动条和纵向滚动条相交处尖角*/
