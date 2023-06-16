@@ -2,42 +2,26 @@
     <div class="on_load" v-if="loadCount<totalCounts">
         <Loading></Loading>
     </div>
+
     <div class="game_body">
         <div style="position: absolute;z-index: 10;color: #00a4a2;font-size: 20px;margin: 10px">帧率：{{fps}}</div>
         <canvas id="three" tabindex="1"></canvas>
+        <div class="header">
+            <img style="position: absolute;left: 0" height="40" src="src/assets/static/xiaohui.png">
+            <div class="floor_btn" v-for="item in floorList">{{item}}</div>
+        </div>
+        <div class="side_part" id="left_part">
+
+        </div>
+        <div class="side_part" id="right_part">
+
+        </div>
     </div>
+
 </template>
 
 <style scoped>
-    .game_body{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        overflow: hidden;
-    }
-    #three{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-    }
-    .on_load{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        z-index: 100;
-    }
-
-    @keyframes slideout {
-        0%{
-            transform: translateY(-50%);
-            opacity: 0;
-        }
-        100%{
-            transform: translateY(0px);
-            opacity: 1;
-        }
-
-    }
+    @import "index.css";
 </style>
 
 <script setup>
@@ -65,6 +49,8 @@
   let totalCounts=1;//目前总加载模型
 
   let loadCount=ref(0);//加载计数
+
+  let floorList=[1,2,3,4,5,6,7,"all"]
 
   onMounted(() => {
 
@@ -151,12 +137,13 @@
 
     //模型初始
     function initModel() {
-      gltfLoader.loadAsync("src/assets/static/Library/libmini.gltf").then((gltf) => {
-        // glb.scene.scale.set(10,10,10);
-        scene.add(gltf.scenes[0]);
-        // console.log(gltf);
-        loadCount.value+=1;
-      });
+      // gltfLoader.loadAsync("src/assets/static/Library/libmini.gltf").then((gltf) => {
+      //   // glb.scene.scale.set(10,10,10);
+      //   scene.add(gltf.scenes[0]);
+      //   // console.log(gltf);
+      //   loadCount.value+=1;
+      // });
+      loadCount.value+=1;
     }
 
     //canvas鼠标单击事件
@@ -170,11 +157,6 @@
       console.log(intersects)
       mouseIsDown = false
       // console.log(intersects);
-      // const dogScene = scene.getObjectByName('dog');
-      // dogScene.position.set(intersects[0].point.x, intersects[0].point.y, intersects[0].point.z);
-      // let posTrans = dogScene.position.clone();
-      // posTrans.y = 5;
-      // controls.target = posTrans
     }
 
     //对象点击拾取事件
